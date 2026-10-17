@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_KE">
 <meta property="og:url" content="https://gmwasubietech.online/">
 <meta property="og:title" content="SUBIE TECH — Mobile Subaru Mechanic & Parts | Nairobi">
-<meta property="og:description" content="Subaru-only mobile mechanic & genuine parts in Nairobi. Built different. Driven hard. Trusted always. Call 0745 505 324.">
+<meta property="og:description" content="Subaru-only mobile mechanic & genuine parts in Nairobi. Built for Subaru. Driven by trust. Call 0745 505 324.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://gmwasubietech.online/assets/share.png">
 <meta property="og:image:width" content="1200">
@@ -36,15 +36,41 @@
 <!-- ============ GOOGLE LOCAL BUSINESS (EDIT ME) ============ -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"AutoRepair",
-  "name":"SUBIE TECH",
-  "description":"Mobile Subaru specialist mechanic and genuine parts in Nairobi, Kenya.",
-  "telephone":"+254745505324",
-  "areaServed":"Nairobi, Kenya",
-  "slogan":"Built different. Driven hard. Trusted always.",
-  "openingHours":"Mo-Su 07:00-19:00",
-  "priceRange":"$$"
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AutoRepair",
+      "@id": "https://gmwasubietech.online/#business",
+      "name": "SUBIE TECH",
+      "alternateName": "GMWAS SUBIE-TECH",
+      "description": "Mobile Subaru specialist mechanic and genuine parts in Nairobi, Kenya. Subaru touch is the key — no guessing, no shortcuts.",
+      "url": "https://gmwasubietech.online/",
+      "telephone": "+254745505324",
+      "slogan": "Built for Subaru. Driven by trust.",
+      "image": "https://gmwasubietech.online/assets/share.png",
+      "areaServed": [
+        { "@type": "Place", "name": "Nairobi, Kenya" },
+        { "@type": "Place", "name": "Kiambu, Kenya" },
+        { "@type": "Place", "name": "Thika Road, Nairobi" },
+        { "@type": "Place", "name": "Mombasa Road, Nairobi" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gmwasubietech.online/#website",
+      "url": "https://gmwasubietech.online/",
+      "name": "SUBIE TECH",
+      "publisher": { "@id": "https://gmwasubietech.online/#business" }
+    }
+  ]
 }
 </script>
 
@@ -215,14 +241,21 @@
   </div>
 </section>
 
-<!-- REVIEWS (EDIT ME — swap in real customer names & words) -->
+<!-- REVIEWS — honest placeholder. Do NOT invent quotes, names, ratings or dates.
+     To add a real review, paste this template into the .rev-grid below, with the
+     customer's permission, using their own words:
+       <div class="rev rise"><p>"Customer's own words."</p><div class="who">— Name, Subaru model</div></div>
+     Only show stars if the customer actually gave a rating. -->
 <section class="sec" id="reviews">
   <div class="wrap">
-    <div class="sec-head rise"><div class="kick">Word on the road</div><h2>What clients say</h2></div>
-    <div class="rev-grid">
-      <div class="rev rise"><div class="stars5">★★★★★</div><p>Came to my place in Kileleshwa, diagnosed the head gasket the same day and fixed it properly. My Forester runs cool again.</p><div class="who">— Add real customer</div></div>
-      <div class="rev rise"><div class="stars5">★★★★★</div><p>Finally a mechanic who actually knows Subarus. Sorted my WRX boost issue when two garages had failed. Trusted always.</p><div class="who">— Add real customer</div></div>
-      <div class="rev rise"><div class="stars5">★★★★★</div><p>Ordered suspension parts through them, genuine fitment and fair price. No more wrong parts and back-and-forth.</p><div class="who">— Add real customer</div></div>
+    <div class="sec-head rise"><div class="kick">Word on the road</div><h2>No fake stars.<br>Just real jobs.</h2></div>
+    <div class="rev-empty rise">
+      <p><strong>Verified customer reviews are on the way.</strong> We don't publish testimonials we can't stand behind — no bought stars, no borrowed quotes. As customers confirm their feedback, it appears here exactly as they gave it.</p>
+      <p>In the meantime, the honest version of a review is a conversation: ask us anything about your Subaru before you book.</p>
+      <div class="rev-ctas">
+        <a class="btn btn-gold" href="https://wa.me/254745505324?text=Hi%20SUBIE%20TECH%20%F0%9F%91%8B%2C%20I%20have%20a%20question%20about%20my%20Subaru%3A" data-wa="Hi SUBIE TECH 👋, I have a question about my Subaru:">Message us a question</a>
+        <a class="btn btn-ghost" href="tel:0745505324">Call 0745 505 324</a>
+      </div>
     </div>
   </div>
 </section>
