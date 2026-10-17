@@ -26,13 +26,10 @@
 
   /* ====== EDIT ME: your social media links (put your real page/handle URLs) ====== */
   const SOCIAL = {
-    Facebook : "https://facebook.com/",      // e.g. https://facebook.com/subietech
-    Instagram: "https://instagram.com/",     // e.g. https://instagram.com/subietech
-    TikTok   : "https://tiktok.com/",        // e.g. https://tiktok.com/@subietech
-    YouTube  : "https://youtube.com/",       // e.g. https://youtube.com/@subietech
-    X        : "https://x.com/",             // e.g. https://x.com/subietech
-    LinkedIn : "https://linkedin.com/"       // e.g. https://linkedin.com/company/subietech
-  };
+  // Only real, verified profiles. Add more (with its ICONS entry) when created.
+  TikTok   : "https://www.tiktok.com/@gmwassubietech",
+  YouTube  : "https://www.youtube.com/channel/UCxahd5f0KrdYQGU__6qC7kA"
+};
   const ICONS = {
     Facebook :'<svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-1.66 0-3 1.34-3 3v2H8v3h3v7h3v-7h2.5l.5-3H14V9.5c0-.28.22-.5.5-.5z"/></svg>',
     Instagram:'<svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.2"/></svg>',
