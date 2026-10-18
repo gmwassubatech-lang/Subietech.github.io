@@ -1,0 +1,16 @@
+version: 2
+# The workflow pins actions to commit SHAs, which is what makes a build
+# reproducible — but a pin only stays safe if something proposes updates.
+# Dependabot reads the `# vX.Y.Z` comment next to each pin, so it can bump the
+# SHA and the comment together in one reviewed pull request.
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      # One PR for the whole set instead of one per action.
+      actions:
+        patterns:
+          - '*'
