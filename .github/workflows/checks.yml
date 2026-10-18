@@ -1,7 +1,8 @@
 name: Site checks
 
-# Runs the same checker the project runs locally, so the check GitHub reports
-# is the real gate and not a separate, drifting copy.
+# Runs the same checkers the project runs locally, so what GitHub reports is the
+# real gate and not a separate, drifting copy. The second job tests the checks
+# themselves: it plants known defects and fails if the checker misses one.
 on:
   push:
   pull_request:
@@ -30,3 +31,19 @@ jobs:
 
       - name: Run static checks
         run: node .github/checks/check-static.mjs
+
+  self-test:
+    name: Checker self-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the published site
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Plant known defects and require the checker to catch each one
+        run: node .github/checks/mutation-test.mjs
