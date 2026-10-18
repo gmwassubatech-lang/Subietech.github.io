@@ -1,9 +1,51 @@
 /* ====== EDIT ME: your numbers ====== */
   const WHATSAPP = "254745505324";   // international format, no + or spaces
-  const PHONE    = "0745505324";
+  const PHONE    = "+254745505324";   // E.164 — dials from any country, not just Kenya
 
   document.getElementById('callLink').href = "tel:" + PHONE;
   document.getElementById('fabCall').href = "tel:" + PHONE;
+
+  /* ====== Call button ======
+     Phones hand tel: straight to the dialer. Desktops have no dialer, so there
+     we show a small card with the number instead of letting the tap do nothing. */
+  const callSheet = document.getElementById('callSheet');
+  function showCallSheet(){
+    if (!callSheet) return;
+    callSheet.hidden = false;
+    callSheet.querySelector('.call-sheet-num').focus();
+  }
+  /* The href is a real tel: link, so a phone hands the tap to the dialer and this
+     page goes to the background. If we are still visible a moment later, no dialer
+     answered — so show the number to copy instead of letting the tap do nothing. */
+  ['callLink','fabCall'].forEach(id=>{
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', ()=>{
+      setTimeout(()=>{ if (!document.hidden) showCallSheet(); }, 900);
+    });
+  });
+  if (callSheet){
+    callSheet.querySelector('[data-call-close]').addEventListener('click', ()=>{ callSheet.hidden = true; });
+    document.addEventListener('keydown', e=>{ if (e.key === 'Escape') callSheet.hidden = true; });
+    document.addEventListener('click', e=>{
+      if (callSheet.hidden) return;
+      if (!callSheet.contains(e.target) && !e.target.closest('#callLink,#fabCall')) callSheet.hidden = true;
+    });
+    const copy = callSheet.querySelector('[data-call-copy]');
+    copy.addEventListener('click', async ()=>{
+      let done = false;
+      try { await navigator.clipboard.writeText(PHONE); done = true; }
+      catch {
+        const t = document.createElement('textarea');
+        t.value = PHONE; t.setAttribute('readonly','');
+        t.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(t); t.select();
+        try { done = document.execCommand('copy'); } catch { done = false; }
+        t.remove();
+      }
+      copy.textContent = done ? 'Copied ✓' : 'Copy failed';
+      setTimeout(()=>{ copy.textContent = 'Copy number'; }, 1800);
+    });
+  }
 
   document.querySelectorAll('[data-wa]').forEach(el=>{
     el.addEventListener('click', e=>{

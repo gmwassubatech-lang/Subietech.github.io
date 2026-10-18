@@ -53,8 +53,13 @@ for (const page of pages) {
   /name="twitter:image" content="https:\/\//.test(html) ? ok(`${page}: twitter:image absolute`) : bad(`${page}: twitter:image not absolute`);
   const noHref = [...html.matchAll(/<a (?![^>]*href=)[^>]*data-wa=/g)].length;
   noHref === 0 ? ok(`${page}: all data-wa elements have href`) : bad(`${page}: ${noHref} data-wa elements without href`);
-  const noTel = [...html.matchAll(/<a (?![^>]*href=)[^>]*(id="callLink"|id="fabCall")[^>]*>/g)].length;
-  noTel === 0 ? ok(`${page}: telephone links have href`) : bad(`${page}: telephone link without href`);
+  const callTags = [...html.matchAll(/<a\b[^>]*\bid="(?:callLink|fabCall)"[^>]*>/g)].map((m) => m[0]);
+  const TEL = 'tel:+254745505324';
+  const callTrouble = callTags.filter((t) => !t.includes(`href="${TEL}"`));
+  callTags.length === 2 && callTrouble.length === 0
+    ? ok(`${page}: both call buttons dial the E.164 number`)
+    : bad(`${page}: call button not wired to ${TEL}`);
+  html.includes('href="assets/favicon.png"') ? ok(`${page}: favicon linked`) : bad(`${page}: favicon link missing`);
 
   /* --- trust/markup assertions (phase 2) --- */
   const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
@@ -111,6 +116,15 @@ for (const page of pages) {
       : bad(`site: schema sameAs wrong/missing`);
     sameAs.some((u) => u.includes('facebook.com')) && bad(`site: unverified Facebook URL in sameAs`);
   }
+
+  /* brand assets + call button colour must match the supplied logo */
+  for (const f of ['assets/logo.webp', 'assets/mark.webp', 'assets/favicon.png']) {
+    fs.existsSync(path.join(SITE, f)) ? ok(`site: ${f} exists`) : bad(`site: ${f} missing`);
+  }
+  const css = fs.readFileSync(path.join(SITE, 'css', 'styles.css'), 'utf8');
+  /--accent:\s*#0070f8/i.test(css) && /\.fab \.call\{background:var\(--accent\)/.test(css)
+    ? ok('site: call button uses the logo blue')
+    : bad('site: call button does not use the logo blue');
 
   /* old slogan must appear nowhere in HTML or main.js */
   const staleHtml = (fs.readFileSync(path.join(SITE, 'index.html'), 'utf8').match(/Built different\. Driven hard/g) || []).length;
