@@ -6,7 +6,6 @@
   document.getElementById('fabCall').href = "tel:" + PHONE;
 
   document.querySelectorAll('[data-wa]').forEach(el=>{
-    el.style.cursor='pointer';
     el.addEventListener('click', e=>{
       e.preventDefault();
       const msg = encodeURIComponent(el.getAttribute('data-wa'));
@@ -19,10 +18,6 @@
   const burger=document.getElementById('burger'), menu=document.getElementById('menu');
   burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
-
-  const io=new IntersectionObserver((es)=>{es.forEach((en,i)=>{if(en.isIntersecting){en.target.style.transitionDelay=(i%4*0.06)+'s';en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12});
-  document.querySelectorAll('.rise').forEach(el=>io.observe(el));
-  document.querySelectorAll('.hero .rise').forEach((el,i)=>{el.style.transitionDelay=(i*0.08)+'s';requestAnimationFrame(()=>el.classList.add('in'))});
 
   /* ====== EDIT ME: your social media links (put your real page/handle URLs) ====== */
   const SOCIAL = {
