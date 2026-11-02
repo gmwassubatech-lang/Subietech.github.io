@@ -111,8 +111,9 @@ for (const page of pages) {
     const biz = nodes.find((n) => n['@type'] === 'AutoRepair');
     if (!biz) continue;
     const sameAs = biz.sameAs || [];
-    sameAs.length === 2 && sameAs.some((u) => u.includes('@gmwassubietech')) && sameAs.some((u) => u.includes('UCxahd5f0KrdYQGU__6qC7kA'))
-      ? ok(`site: schema sameAs carries both real profiles`)
+    const PROFILES = ['@gmwassubietech', 'instagram.com/gmwassubietech', 'x.com/gmwassubietech', 'UCxahd5f0KrdYQGU__6qC7kA'];
+    sameAs.length === PROFILES.length && PROFILES.every((p) => sameAs.some((u) => u.includes(p)))
+      ? ok(`site: schema sameAs carries all four real profiles`)
       : bad(`site: schema sameAs wrong/missing`);
     sameAs.some((u) => u.includes('facebook.com')) && bad(`site: unverified Facebook URL in sameAs`);
   }
