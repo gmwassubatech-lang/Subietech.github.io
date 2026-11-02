@@ -20,6 +20,7 @@
   .ic{display:inline-block;vertical-align:middle;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .part .ico .ic{width:32px;height:32px;color:var(--accent)}
   .info .lab .ic{width:22px;height:22px;color:var(--accent)}
+  .info small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;white-space:nowrap}
   .trust span .ic{width:18px;height:18px;color:var(--accent)}
   .why-list .ck .ic{width:16px;height:16px;stroke-width:2.6;color:#fff}
 
@@ -202,6 +203,8 @@
   .call-sheet h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:15px;color:var(--muted);margin-bottom:4px}
   .call-sheet-num{font-family:'Anton',sans-serif;font-size:29px;line-height:1.1;letter-spacing:.5px;display:block}
   .call-sheet p{color:var(--muted);font-size:13.5px;margin:8px 0 14px}
+  .call-sheet p.call-sheet-alt{color:var(--muted);margin:6px 0 10px}
+  .call-sheet .call-sheet-alt a{color:var(--paper);font-weight:700;text-decoration:none;border-bottom:1px solid var(--accent)}
   .call-sheet-row{display:flex;gap:8px}
   .call-sheet-row .btn{flex:1;padding:11px 12px;font-size:15px}
   .call-sheet-x{position:absolute;top:4px;right:8px;background:none;border:0;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;padding:4px}
